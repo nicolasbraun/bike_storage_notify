@@ -3,14 +3,14 @@ name: Bike SaS checker - Runner
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */2 * * *"
+    - cron: "0 10 * * *"
 
 env:
   EMAIL: ${{ secrets.EMAIL }}
   PASSWORD: ${{ secrets.PASSWORD }}
   SLACK_HOOK_URL: ${{ secrets.SLACK_HOOK_URL }}
   SEARCH_STRING: "chou"
-  NOTIFY_FAILURE: "true"
+  NOTIFY_FAILURE: "false"
 concurrency:
   group: "bikecheck"
   cancel-in-progress: true
