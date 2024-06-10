@@ -9,6 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.chrome import ChromeType
 
 
 load_dotenv()
@@ -30,9 +31,11 @@ option.add_argument("--no-sandbox")
 option.add_argument("--window-size=1920,1080")
 option.add_argument("--accept-lang=fr")
 
-serv = Service(ChromeDriverManager().install())
-driver = webdriver.Chrome(service=serv, options=option)
 
+service = Service(ChromeDriverManager().install())
+print(service)
+driver = webdriver.Chrome(service=service, options=option)
+print(f"Driver: {driver}")
 
 driver.get("https://abris-securises-velos.paris.fr/login")
 
@@ -63,3 +66,5 @@ if len(all_elements) > 0:
 elif notify_failure:
     payload = {"text": f"❌ Did not found {searched_string} in Paris Bike SaS list"}
     response = requests.post(webhook, json=payload)
+
+driver.quit()
