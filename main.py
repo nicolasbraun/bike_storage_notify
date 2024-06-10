@@ -26,7 +26,7 @@ option.page_load_strategy = "normal"
 option.add_argument("--disable-infobars")
 option.add_argument("start-maximized")
 option.add_argument("--disable-extensions")
-# option.add_argument("--headless")
+option.add_argument("--headless")
 option.add_argument("--no-sandbox")
 option.add_argument("--window-size=1920,1080")
 option.add_argument("--accept-lang=fr")
@@ -50,7 +50,7 @@ time.sleep(5)
 
 driver.get("https://abris-securises-velos.paris.fr/waiting-lists")
 
-time.sleep(5)
+time.sleep(30)
 
 
 elements = driver.find_elements(By.XPATH, f"//*[contains(text(), '{searched_string}')]")
